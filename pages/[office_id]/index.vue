@@ -5,27 +5,21 @@
 
 <script setup>
 
-  /**
-   * Get Office
-   *
-   */
-  const { office_id } = useRoute().params
-  
-  const { data: { _rawValue : office } } = await useFetch(`/api/office/${office_id}`)
+  import { officeStore } from '~/store/office'
 
   /**
-   * Office don't exist
+   * Middlewares
    *
    */
-  if(!office) navigateTo('/')
-  
-  else
+  definePageMeta({
+    middleware: ['office', 'landing']
+  })
 
-    /**
-     * Landing don't exist or disabled
-     *
-     */
-    if('landing' in office && !office.landing) navigateTo(`/${office_id}/home`)
+  /**
+   * Get office on store
+   *
+   */
+  const office = officeStore().office
 
 </script>
 

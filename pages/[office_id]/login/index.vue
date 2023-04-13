@@ -5,18 +5,26 @@
 
 <script setup>
 
+  import { officeStore } from '~/store/office'
+
   /**
-   * Get Office
+   * Middlewares
    *
    */
-  const { office_id } = useRoute().params
-  
-  const { data: { _rawValue : office } } = await useFetch(`/api/office/${office_id}`)
+  definePageMeta({
+    middleware: ['office']
+  })
+
+  /**
+   * Get office on store
+   *
+   */
+  const office = officeStore().office
 
 </script>
 
 <template>
 
-  {{ office.name }} Office Login
+  {{ office ? `${office.name} Office Login` : '' }}
 
 </template>
