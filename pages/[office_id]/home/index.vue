@@ -12,7 +12,8 @@
    *
    */
   definePageMeta({
-    middleware: ['office']
+    middleware: ['office', 'app']
+    // middleware: ['office']
   })
 
   /**

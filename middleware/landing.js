@@ -14,7 +14,7 @@ export default defineNuxtRouteMiddleware(async () => {
   const office = officeStore().office
 
   /**
-   * Landing attr don't exist or disabled
+   * Landing disabled
    *
    */
   if('landing' in office && !office.landing) return navigateTo(`/${office.id}/home`)

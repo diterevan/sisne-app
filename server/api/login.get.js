@@ -1,0 +1,20 @@
+/**
+ * LOGIN
+ *
+ */
+import jwt from 'jsonwebtoken'
+
+const KEY = process.env.KEY
+
+
+async function login(event) {
+
+  const exp = Math.floor(Date.now() / 1000) + (60)
+
+  const token = jwt.sign({ office_id: 'obe', user_id: '123456', exp }, KEY)
+
+  return token
+}
+
+
+export default defineEventHandler(login)

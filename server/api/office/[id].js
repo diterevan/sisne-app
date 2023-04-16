@@ -2,7 +2,6 @@
  * GET OFFICE
  *
  */
-
 const db = DB()
 
 

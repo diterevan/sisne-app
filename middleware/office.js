@@ -8,12 +8,16 @@ import { officeStore } from '~/store/office'
 export default defineNuxtRouteMiddleware(async () => {
 
   /**
-   * Find office by id
+   * Get office id
    *
    */
   const { office_id } = useRoute().params
 
-  const { data: { _rawValue : office } } = await useFetch(`/api/office/${office_id}`)
+  /**
+   * Find office by id
+   *
+   */
+  const { data: { value : office } } = await useFetch(`/api/office/${office_id}`)
 
   /**
    * Office don't exist
@@ -25,7 +29,7 @@ export default defineNuxtRouteMiddleware(async () => {
    * Office disabled
    *
    */
-  if(!office.enabled) return navigateTo('/')
+  if('enabled' in office && !office.enabled) return navigateTo('/')
 
   /**
    * Save office on store

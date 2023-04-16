@@ -12,7 +12,7 @@
    *
    */
   definePageMeta({
-    middleware: ['office']
+    middleware: ['office', 'login']
   })
 
   /**
@@ -20,6 +20,18 @@
    *
    */
   const office = officeStore().office
+
+
+
+  // const body = {
+  //   email: "diterevan@gmail.com",
+  //   password: "123",
+  //   office_id: office.id
+  // }
+
+  // const { data: { value : res } } = await useFetch('/api/login', { method: 'post', body }); console.log({ res })
+
+  // useCookie('token').value = res
 
 </script>
 
