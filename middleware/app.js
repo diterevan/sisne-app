@@ -24,7 +24,8 @@ export default defineNuxtRouteMiddleware(async () => {
    * Token dont exist
    *
    */
-  if (!token) return navigateTo(`/${office.id}/login`)
+
+  if (!token) return navigateTo('/login')
 
   else {
 
@@ -42,7 +43,7 @@ export default defineNuxtRouteMiddleware(async () => {
        */
       useCookie('token').value = null
 
-      return navigateTo(`/${office.id}/login`)
+      return navigateTo('/login')
 
     } else
 
@@ -50,6 +51,6 @@ export default defineNuxtRouteMiddleware(async () => {
        * Dont logged in office
        *
        */
-      if (res.office_id != office.id) return navigateTo(`/${office.id}/login`)
+      if (res.office_id != office.id) return navigateTo('/login')
   }
 })

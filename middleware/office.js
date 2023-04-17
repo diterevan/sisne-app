@@ -5,39 +5,38 @@
 import { officeStore } from '~/store/office'
 
 
-export default defineNuxtRouteMiddleware(async (to, from) => {
+export default defineNuxtRouteMiddleware(async () => {
 
-  // const useRoute = useRoute().params
-  console.log(useRequestHeaders().host)
+  if (process.server) {
 
-  /**
-   * Get office id
-   *
-   */
-  const { office_id } = useRoute().params
+    /**
+     * Get office id
+     *
+     */
+    const office_id = useRequestHeaders().host.split('.')[0]
 
-  /**
-   * Find office by id
-   *
-   */
-  const { data: { value : office } } = await useFetch(`/api/office/${office_id}`)
+    /**
+     * Find office by id
+     *
+     */
+    const { data: { value : office } } = await useFetch(`/api/office/${office_id}`)
 
-  /**
-   * Office don't exist
-   *
-   */
-  if(!office) return navigateTo('/')
+    /**
+     * Office don't exist
+     *
+     */
+    if(!office) return navigateTo('/not_found')
 
-  /**
-   * Office disabled
-   *
-   */
-  if('enabled' in office && !office.enabled) return navigateTo('/')
+    /**
+     * Office disabled
+     *
+     */
+    if('enabled' in office && !office.enabled) return navigateTo('/working')
 
-  /**
-   * Save office on store
-   *
-   */
-  officeStore().set(office)
-
+    /**
+     * Save office on store
+     *
+     */
+    officeStore().set(office)
+  }
 })

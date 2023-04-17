@@ -1,8 +1,3 @@
-<!--
- * OFFICE HOME
- *
- -->
- 
 <script setup>
 
   import { officeStore } from '~/store/office'
@@ -12,8 +7,7 @@
    *
    */
   definePageMeta({
-    middleware: ['office', 'app']
-    // middleware: ['office']
+    middleware: ['office', 'login']
   })
 
   /**
@@ -26,6 +20,6 @@
 
 <template>
 
-  {{ office ? `${office.name} Office Home` : '' }}
+  {{ office ? `${office.name} Office Landing` : '' }}
 
 </template>
