@@ -5,7 +5,10 @@
 import { officeStore } from '~/store/office'
 
 
-export default defineNuxtRouteMiddleware(async () => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
+
+  // const useRoute = useRoute().params
+  console.log(useRequestHeaders().host)
 
   /**
    * Get office id
