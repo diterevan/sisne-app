@@ -1,3 +1,3 @@
 <template>
-  Working
+  Work
 </template>

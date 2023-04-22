@@ -25,13 +25,13 @@ export default defineNuxtRouteMiddleware(async () => {
      * Office don't exist
      *
      */
-    if(!office) return navigateTo('/not_found')
+    if(!office) return navigateTo('/404')
 
     /**
      * Office disabled
      *
      */
-    if('enabled' in office && !office.enabled) return navigateTo('/working')
+    if('enabled' in office && !office.enabled) return navigateTo('/work')
 
     /**
      * Save office on store
